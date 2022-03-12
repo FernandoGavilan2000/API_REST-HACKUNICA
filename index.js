@@ -1,11 +1,13 @@
 const express = require('express');
+const cors = require('cors');
 const routerApp = require('./routes/index');
 const { logErrors, errorHandler } = require('./middlewares/errorHandler');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cors());
 
 //Router Principal de nuestra API-Rest
 routerApp(app);
