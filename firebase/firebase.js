@@ -8,7 +8,7 @@ admin.initializeApp({
 		type: 'service_account',
 		project_id: 'api-hackunica',
 		private_key_id: `${process.env.PRIVATE_KEY_ID}`,
-		private_key: `${process.env.PRIVATE_KEY}`,
+		private_key: `${process.env.PRIVATE_KEY ? process.env.PRIVATE_KEY.replace(/\n/gm, '\n') : undefined}`,
 		client_email: 'firebase-adminsdk-4kibt@api-hackunica.iam.gserviceaccount.com',
 		client_id: `${process.env.CLIENT_ID}`,
 		auth_uri: 'https://accounts.google.com/o/oauth2/auth',
