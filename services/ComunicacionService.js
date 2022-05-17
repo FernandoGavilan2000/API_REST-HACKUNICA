@@ -40,5 +40,19 @@ class ComunicacionService {
 		}));
 		return dataCollection;
 	}
+
+	async getAllQuizzes() {
+		const querySnapshot = await db.collection('Quizzes').where('categoria', '==', 'Comunicacion').get();
+		if (querySnapshot.empty) {
+			throw new Error('No hay quizes de Comunicacion');
+		}
+		let dataCollection = [];
+		dataCollection = querySnapshot.docs.map((doc) => ({
+			id: doc.id,
+			titulo: doc.data().titulo,
+			about: doc.data().about,
+		}));
+		return dataCollection;
+	}
 }
 module.exports = ComunicacionService;

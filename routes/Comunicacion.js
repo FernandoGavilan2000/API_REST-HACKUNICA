@@ -25,6 +25,16 @@ router.get('/readings/:id', async (req, res, next) => {
 	}
 });
 
+// Get all quizzes
+router.get('/quizzes', async (req, res, next) => {
+	try {
+		const quizes = await service.getAllQuizzes();
+		res.status(200).json(quizes);
+	} catch (error) {
+		next(error);
+	}
+});
+
 // Get Videos
 router.get('/videos/', async (req, res, next) => {
 	try {
@@ -41,14 +51,4 @@ router.get('/videos/', async (req, res, next) => {
 	}
 });
 
-// Get Videos by Topic
-
-// Get all quizes
-router.get('/quizes', async (req, res, next) => {
-	try {
-		const quizes = await service.res.status(200).json(quizes);
-	} catch (error) {
-		next(error);
-	}
-});
 module.exports = router;
