@@ -8,7 +8,7 @@ const service = new CourseService();
 // Get all readings
 router.get('/readings', async (req, res, next) => {
 	try {
-		const readings = await service.getAllReadings('CienciasSociales');
+		const readings = await service.getAllReadings('Sociales');
 		res.status(200).json(readings);
 	} catch (error) {
 		next(error);
@@ -28,7 +28,7 @@ router.get('/readings/:id', async (req, res, next) => {
 // Get all quizzes
 router.get('/quizzes', async (req, res, next) => {
 	try {
-		const quizes = await service.getAllQuizzes('CienciasSociales');
+		const quizes = await service.getAllQuizzes('Sociales');
 		res.status(200).json(quizes);
 	} catch (error) {
 		next(error);

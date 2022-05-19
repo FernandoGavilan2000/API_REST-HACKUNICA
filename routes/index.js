@@ -9,7 +9,7 @@ const RouterApp = (app) => {
 	app.use('/auth', Auth);
 	app.use('/comunicacion', Comunicacion);
 	app.use('/ingles', Ingles);
-	app.use('/cienciasociales', CienciaSociales);
+	app.use('/sociales', CienciaSociales);
 	app.use('/matematicas', Matematicas);
 };
 
