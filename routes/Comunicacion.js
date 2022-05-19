@@ -35,6 +35,28 @@ router.get('/quizzes', async (req, res, next) => {
 	}
 });
 
+// Get one Quizz By ID
+router.get('/quizzes/:id', async (req, res, next) => {
+	try {
+		const { id } = req.params;
+		const quizz = await service.getQuizzByID(id);
+		res.status(200).json(quizz);
+	} catch (error) {
+		next(error);
+	}
+});
+
+// Get Questions from Quizz ID
+router.get('/quizzes/:id/questions', async (req, res, next) => {
+	try {
+		const { id } = req.params;
+		const quizz = await service.getQuestionsFromQuizz(id);
+		res.status(200).json(quizz);
+	} catch (error) {
+		next(error);
+	}
+});
+
 // Get Videos
 router.get('/videos/', async (req, res, next) => {
 	try {

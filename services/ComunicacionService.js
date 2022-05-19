@@ -49,10 +49,40 @@ class ComunicacionService {
 		let dataCollection = [];
 		dataCollection = querySnapshot.docs.map((doc) => ({
 			id: doc.id,
-			titulo: doc.data().titulo,
+			titulo: doc.data().title,
 			about: doc.data().about,
 		}));
 		return dataCollection;
+	}
+
+	async getQuizzByID(id_doc) {
+		const quizzRef = await db.collection('Quizzes').doc(id_doc);
+		const doc = await quizzRef.get();
+		if (!doc.exists) {
+			throw new Error('No existe el quizz');
+		} else {
+			let data = {
+				id: doc.id,
+				titulo: doc.data().title,
+				about: doc.data().about,
+				categoria: doc.data().categoria,
+			};
+			return data;
+		}
+	}
+	async getQuestionsFromQuizz(id_quizz) {
+		const QuizzesRef = db.collection('Quizzes');
+		const querySnapshot = await QuizzesRef.doc(id_quizz).collection('questions').get();
+		if (querySnapshot.empty) {
+			throw new Error('El quizz no tiene preguntas');
+		}
+		let questions = [];
+		questions = querySnapshot.docs.map((doc) => ({
+			titulo: doc.data().title,
+			options: doc.data().options,
+			index: doc.data().index,
+		}));
+		return questions;
 	}
 }
 module.exports = ComunicacionService;
