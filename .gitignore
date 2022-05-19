@@ -183,7 +183,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-
+app.yaml
+.gcloudignore
 
 
 # End of https://www.toptal.com/developers/gitignore/api/node,windows,linux

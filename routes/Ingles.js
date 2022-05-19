@@ -3,12 +3,12 @@ const router = express.Router();
 const CourseService = require('../services/CourseService');
 
 const service = new CourseService();
-// ---------------------- Comunicacion ------------------------------
+// ---------------------- Ingles ------------------------------
 
 // Get all readings
 router.get('/readings', async (req, res, next) => {
 	try {
-		const readings = await service.getAllReadings('Comunicacion');
+		const readings = await service.getAllReadings('Ingles');
 		res.status(200).json(readings);
 	} catch (error) {
 		next(error);
@@ -28,7 +28,7 @@ router.get('/readings/:id', async (req, res, next) => {
 // Get all quizzes
 router.get('/quizzes', async (req, res, next) => {
 	try {
-		const quizes = await service.getAllQuizzes('Comunicacion');
+		const quizes = await service.getAllQuizzes('Ingles');
 		res.status(200).json(quizes);
 	} catch (error) {
 		next(error);
@@ -65,7 +65,7 @@ router.get('/videos/', async (req, res, next) => {
 			const videos = await service.getVideosByTopic(q);
 			res.status(200).json(videos);
 		} else {
-			const videos = await service.getVideos('Comunicacion Primaria Temas');
+			const videos = await service.getVideos('Ingles Temas Primaria');
 			res.status(200).json(videos);
 		}
 	} catch (error) {
